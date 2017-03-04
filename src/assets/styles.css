@@ -1,0 +1,54 @@
+.op-inner{
+    width: 30em;
+    border: 1px solid grey;
+    border-radius: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.op-main{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.op-detail{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.date{
+    text-align: center;
+    width: 15%;
+}
+
+.label{
+   text-align: left;
+   width: 55%;
+}
+
+.amount{
+    text-align: center;
+    font-weight: bold;
+    width: 15%;
+}
+
+.edit{
+    width: 15%;
+}
+
+.operations-outcome{
+    width: 30em;
+    padding: 0.5em;
+    border: 1px solid black;
+    border-radius: 0.3em;
+    margin: auto;
+}
+
+.titles{
+    display: flex;
+    font-weight: bold;
+}
+

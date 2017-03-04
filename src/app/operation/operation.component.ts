@@ -4,7 +4,7 @@ import { Operation } from '../operation'
 @Component({
   selector: 'operation',
   templateUrl: './operation.component.html',
-  styleUrls: ['./operation.component.css']
+  styleUrls: ['../../assets/styles.css']
 })
 export class OperationComponent implements OnInit {
 
