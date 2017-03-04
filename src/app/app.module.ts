@@ -4,10 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { ListOutcomeComponent } from './list-outcome/list-outcome.component';
+import { ListIncomeComponent } from './list-income/list-income.component';
+import { OperationComponent } from './operation/operation.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListOutcomeComponent,
+    ListIncomeComponent,
+    OperationComponent
   ],
   imports: [
     BrowserModule,

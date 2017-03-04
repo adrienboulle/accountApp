@@ -1,0 +1,15 @@
+<div class="op-inner">
+  <div class="op-main">
+    <div class="date">{{op.date}}</div>
+    <div class="amount">{{op.amount}}</div>
+    <div class="label">{{op.label}}</div>
+    <div class="edit" (click)="toggleEdit()">
+      Edit
+    </div>
+  </div>
+  <div class="op-detail" *ngIf="isExpanded">
+    <div class="">
+      {{op.id}}
+    </div>
+  </div>
+</div>
