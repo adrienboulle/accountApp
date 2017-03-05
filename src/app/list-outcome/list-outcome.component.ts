@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Operation } from '../operation';
 import {IMyOptions, IMyDateModel, IMyDate} from 'mydatepicker';
 
@@ -51,7 +51,7 @@ export class ListOutcomeComponent implements OnInit {
     return this._ops;
   }
 
-  newDate: Date;
+  newDate: Date = new Date(Date.now());
   public onDateChanged(event: IMyDateModel) {
         this.newDate = event.jsdate;
   }
@@ -70,4 +70,6 @@ export class ListOutcomeComponent implements OnInit {
       );
     }
   }
+
+
 }

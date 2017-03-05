@@ -4,12 +4,46 @@
     <div class="amount">{{op.amount}} €</div>
     <div class="label">{{op.label}}</div>
     <div class="edit" (click)="toggleEdit()">
-      Edit
+      Editer
     </div>
   </div>
   <div class="op-detail" *ngIf="isExpanded">
-    <div class="">
-      {{op.id}}
-    </div>
+    <form class="edit-op">
+      <div class="edit-date">
+        <label>Date: </label>
+        <my-date-picker
+          [options]="myDatePickerOptions" 
+          (dateChanged)="onDateChanged($event)">
+        </my-date-picker>
+      </div>
+      <div class="edit-amount">
+        <label for="editAmount">Montant: </label>
+        <input type="text" id="editAmount" [value]="op.amount" size="4" #editAmount>
+      </div>
+      <div class="edit-label">
+        <label for="editlabel">Libéllé: </label>
+        <input type="text" id="editLabel" [value]="op.label" #editLabel>
+      </div>
+      <div class="edit-category">
+        <label>Catégorie: </label>
+        <select #editCategory>
+          <option value="alimentation">Alimentation</option>
+          <option value="logement">Logement</option>
+          <option value="loisir">Loisir</option>
+          <option value="carburant">Carburant</option>
+        </select>
+      </div>
+      <div class="edit-type">
+        <label>Type: </label>
+        <select>
+          <option value="virement">Virement</option>
+          <option value="espece">Espèces</option>
+          <option value="cheque">Chèque</option>
+        </select>
+      </div>
+      <button class="save-op" (click)="editOp(editAmount.value,editLabel.value, editCategory.value)">
+        Enregistrer
+      </button>
+    </form>
   </div>
 </div>
