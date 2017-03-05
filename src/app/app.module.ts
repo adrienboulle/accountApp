@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MyDatePickerModule } from 'mydatepicker';
 
-import { DatePickerModule } from 'ng2-datepicker';
 import { AppComponent } from './app.component';
 import { ListOutcomeComponent } from './list-outcome/list-outcome.component';
 import { ListIncomeComponent } from './list-income/list-income.component';
@@ -20,7 +20,7 @@ import { OperationComponent } from './operation/operation.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    DatePickerModule,
+    MyDatePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

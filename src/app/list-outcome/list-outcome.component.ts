@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Operation } from '../operation'
-import { DatePickerOptions, DateModel } from 'ng2-datepicker';
+import { Operation } from '../operation';
+import {IMyOptions, IMyDateModel, IMyDate} from 'mydatepicker';
 
 @Component({
   selector: 'list-outcome',
@@ -8,19 +8,28 @@ import { DatePickerOptions, DateModel } from 'ng2-datepicker';
   styleUrls: ['../../assets/styles.css']
 })
 export class ListOutcomeComponent implements OnInit {
-  date: DateModel;
-  options: DatePickerOptions;
+
   private _ops: Operation[];
 
-  constructor() { 
-    this.options = new DatePickerOptions();
-    
+  private myDatePickerOptions: IMyOptions = {
+        dateFormat: 'dd.mm.yyyy',
+        todayBtnTxt: 'Today',
+        firstDayOfWeek: 'mo',
+        sunHighlight: true,
+        height: '19px',
+        width: '70px',
+        inline: false,
+        disableUntil: {year: 2016, month: 8, day: 10},
+        selectionTxtFontSize: '12px'
+    };
+
+  constructor() {
     this._ops = [
       new Operation({
         id: '1',
         amount: 10,
         label: 'blop',
-        date: Date.now(),
+        date: '05/03/2017',
         type: 'outcome',
         category: 'sortie',
       }),
@@ -40,5 +49,25 @@ export class ListOutcomeComponent implements OnInit {
 
   public get ops(): Operation[] {
     return this._ops;
+  }
+
+  newDate: Date;
+  public onDateChanged(event: IMyDateModel) {
+        this.newDate = event.jsdate;
+  }
+
+  public addOp (newAmount: number, newLabel: string): void {
+    if(newAmount && newLabel) {
+      this._ops.push(
+        new Operation({
+          id: '3',
+          amount: newAmount,
+          label: newLabel,
+          date: this.newDate,
+          type: 'outcome',
+          category: 'alimentation'
+        })
+      );
+    }
   }
 }

@@ -1,11 +1,20 @@
 <div class="operations-outcome">
   <div class="titles">
-    <div class="date">{{ date | date:'d/M/y' }}</div>
+    <div class="date">Date</div>
     <div class="amount">Montant</div>
     <div class="label">Libéllé</div>
   </div>
-  <!--<form class="op-inner op-main">-->
-  <ng2-datepicker [options]="options" [(ngModel)]="date"></ng2-datepicker>
-  <!--</form>-->
+  <form class="new-op">
+    <my-date-picker 
+      class="new-date" 
+      [options]="myDatePickerOptions" 
+      (dateChanged)="onDateChanged($event)">
+    </my-date-picker>
+    <input class="new-amount" type="text" id="newAmount" #newAmount>
+    <input class="new-label" type="text" id="newLabel" #newLabel>
+    <div class="add-new-op" (click)="addOp(newAmount.value,newLabel.value)">
+      Ajouter
+    </div>
+ </form>
   <operation [op]="op" *ngFor="let op of ops"></operation>
 </div>
