@@ -12,7 +12,20 @@ export class OperationComponent implements OnInit {
   @Input() op: Operation;
 
   private _isExpanded: boolean;
-  newDate: Date = new Date();
+  newDate: Date = new Date(Date.now());
+  categories = [
+       {id: 1, name: "Logement"},
+       {id: 2, name: "Carburant"},
+       {id: 3, name: "Alimentation"},
+       {id: 4, name: "Loisirs"},
+  ];
+  types = [
+       {id: 1, name: "Virement"},
+       {id: 2, name: "Chèque"},
+       {id: 3, name: "Espèces"},
+       {id: 4, name: "Carte"},
+  ];
+
 
   private myDatePickerOptions: IMyOptions = {
         dateFormat: 'dd/mm/yyyy',
@@ -27,7 +40,6 @@ export class OperationComponent implements OnInit {
     };
 
   constructor() {
-    //this.newDate = this.op.date;
   }
 
   public ngOnInit() {

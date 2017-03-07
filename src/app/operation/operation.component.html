@@ -11,37 +11,34 @@
     <form class="edit-op">
       <div class="edit-date">
         <label>Date: </label>
-        <my-date-picker
+        <my-date-picker class="datepicker"
           [options]="myDatePickerOptions" 
           (dateChanged)="onDateChanged($event)">
         </my-date-picker>
       </div>
-      <div class="edit-amount">
+      <div>
         <label for="editAmount">Montant: </label>
-        <input type="text" id="editAmount" [value]="op.amount" size="4" #editAmount>
+        <input type="text" id="editAmount" [value]="op.amount" size="4" class="edit-amount" #editAmount>
       </div>
-      <div class="edit-label">
+      <div>
         <label for="editlabel">Libéllé: </label>
-        <input type="text" id="editLabel" [value]="op.label" #editLabel>
+        <input type="text" id="editLabel" [value]="op.label" class="edit-label" #editLabel>
       </div>
-      <div class="edit-category">
+      <div>
         <label>Catégorie: </label>
-        <select #editCategory>
-          <option value="alimentation">Alimentation</option>
-          <option value="logement">Logement</option>
-          <option value="loisir">Loisir</option>
-          <option value="carburant">Carburant</option>
+        <select [(ngModel)]="selectedCategory" class="edit-category" name="editCategory" #editCategory>
+          <option *ngFor="let c of categories" [ngValue]="c">{{c.name}}</option>
         </select>
       </div>
-      <div class="edit-type">
+      <div>
         <label>Type: </label>
-        <select>
-          <option value="virement">Virement</option>
-          <option value="espece">Espèces</option>
-          <option value="cheque">Chèque</option>
+        <select [(ngModel)]="selectedType" class="edit-type" name="editType" #editType>
+          <option *ngFor="let t of types" [ngValue]="t">{{t.name}}</option>
         </select>
       </div>
-      <button class="save-op" (click)="editOp(editAmount.value,editLabel.value, editCategory.value)">
+      <button 
+        class="save-op" 
+        (click)="editOp(editAmount.value,editLabel.value, editCategory.value, editType.value)">
         Enregistrer
       </button>
     </form>

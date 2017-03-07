@@ -14,5 +14,7 @@ export class Operation {
         this.type = data.type;
         this.category = data.category;
     }
+
+
 }
 
