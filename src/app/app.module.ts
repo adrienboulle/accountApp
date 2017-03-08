@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ListOutcomeComponent } from './list-outcome/list-outcome.component';
 import { ListIncomeComponent } from './list-income/list-income.component';
 import { OperationComponent } from './operation/operation.component';
+import { OperationService } from './operation/opService.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { OperationComponent } from './operation/operation.component';
     HttpModule,
     MyDatePickerModule
   ],
-  providers: [],
+  providers: [OperationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

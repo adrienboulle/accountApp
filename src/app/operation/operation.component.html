@@ -7,7 +7,7 @@
       Editer
     </div>
   </div>
-  <div class="op-detail" *ngIf="isExpanded">
+  <div class="op-detail" *ngIf="op === opService.getCurrentOp()">
     <form class="edit-op">
       <div class="edit-date">
         <label>Date: </label>
