@@ -1,1 +1,16 @@
-<list-outcome></list-outcome>
+<div class="app-container">
+    <div class="app-headers">
+        <div class="home-sheet" routerLink="/home" routerLinkActive="active">
+            Accueil
+        </div>
+        <div class="income-sheet" routerLink="/income" routerLinkActive="active">
+            Revenus
+        </div>
+        <div class="outcome-sheet" routerLink="/outcome" routerLinkActive="active">
+            Dépenses
+        </div>
+    </div>
+    <div class="app-body">
+        <router-outlet></router-outlet>
+    </div>
+</div>

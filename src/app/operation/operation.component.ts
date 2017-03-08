@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {IMyOptions, IMyDateModel, IMyDate} from 'mydatepicker';
-import { Operation } from '../operation'
+import { Operation } from './operation'
 import { OperationService } from './opService.service'
 
 @Component({
@@ -39,8 +39,7 @@ export class OperationComponent implements OnInit {
     selectionTxtFontSize: '12px'
   };
 
-  constructor(private opService: OperationService) {
-  }
+  constructor(private opService: OperationService) { }
 
   public ngOnInit() {}
 

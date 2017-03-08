@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Operation } from '../operation';
+import { Operation } from '../operation/operation';
 import {IMyOptions, IMyDateModel, IMyDate} from 'mydatepicker';
 
 @Component({
