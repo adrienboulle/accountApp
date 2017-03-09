@@ -28,24 +28,23 @@ export class ListOutcomeComponent implements OnInit {
       new Operation({
         id: '1',
         amount: 10,
-        label: 'blop',
+        label: 'cinema',
         date: '05/03/2017',
         type: 'outcome',
-        category: 'sortie',
+        category: 'a',
       }),
       new Operation({
         id: '2',
         amount: 15,
-        label: 'blop2',
+        label: 'courses',
         date: Date.now(),
         type: 'outcome',
-        category: 'alimentation',
+        category: 'a',
       }),
     ];
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public get ops(): Operation[] {
     return this._ops;
@@ -60,12 +59,12 @@ export class ListOutcomeComponent implements OnInit {
     if(newAmount && newLabel) {
       this._ops.push(
         new Operation({
-          id: '3',
+          id: '1',
           amount: newAmount,
           label: newLabel,
           date: this.newDate,
           type: 'outcome',
-          category: 'alimentation'
+          category: ''
         })
       );
     }

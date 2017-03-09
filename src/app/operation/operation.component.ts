@@ -11,6 +11,7 @@ import { OperationService } from './opService.service'
 export class OperationComponent implements OnInit {
 
   @Input() op: Operation;
+  isIncome: boolean;
 
   newDate: Date = new Date(Date.now());
   categories = [
@@ -18,14 +19,15 @@ export class OperationComponent implements OnInit {
     {id: 2, name: "Carburant"},
     {id: 3, name: "Alimentation"},
     {id: 4, name: "Loisirs"},
+    {id: 5, name: "Autre"},
   ];
   types = [
     {id: 1, name: "Virement"},
     {id: 2, name: "Chèque"},
     {id: 3, name: "Espèces"},
     {id: 4, name: "Carte"},
+    {id: 5, name: "Autre"},
   ];
-
 
   private myDatePickerOptions: IMyOptions = {
     dateFormat: 'dd/mm/yyyy',
@@ -35,13 +37,15 @@ export class OperationComponent implements OnInit {
     height: '19px',
     width: '150px',
     inline: false,
-    disableUntil: {year: 2016, month: 8, day: 10},
+    disableUntil: {year: 2016, month: 1, day: 1},
     selectionTxtFontSize: '12px'
   };
 
   constructor(private opService: OperationService) { }
 
-  public ngOnInit() {}
+  public ngOnInit() {
+    this.isIncome = this.op.type === 'income' ? true : false;
+  }
 
   public toggleEdit() {
     this.opService.setCurrentOp(this.op);

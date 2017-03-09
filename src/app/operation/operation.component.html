@@ -1,4 +1,4 @@
-<div class="op-inner">
+<div class="op-inner" [ngClass]="{'outcome-inner': !isIncome, 'income-inner': isIncome}">
   <div class="op-main">
     <div class="date">{{op.date | date:'d/M/y'}}</div>
     <div class="amount">{{op.amount}} €</div>
@@ -7,7 +7,7 @@
       Editer
     </div>
   </div>
-  <div class="op-detail" *ngIf="op === opService.getCurrentOp()">
+  <div class="op-detail" *ngIf="op === opService.getCurrentOp()" [ngClass]="{'outcome-detail': !isIncome, 'income-detail': isIncome}">
     <form class="edit-op">
       <div class="edit-date">
         <label>Date: </label>
@@ -19,7 +19,7 @@
       </div>
       <div>
         <label for="editAmount">Montant: </label>
-        <input type="text" id="editAmount" [value]="op.amount" size="4" class="edit-amount" #editAmount>
+        <input type="text" id="editAmount" [value]="op.amount" size="5" class="edit-amount" #editAmount>
       </div>
       <div>
         <label for="editlabel">Libéllé: </label>

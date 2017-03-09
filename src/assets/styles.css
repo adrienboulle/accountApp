@@ -1,9 +1,14 @@
 .op-inner{
-    width: 100%;
-    border: 1px solid darkgray;
-    border-radius: 0.2em;
+    width: 30em;
     margin-bottom: 0.2em;
+}
+
+.outcome-inner{
     background-color: #CB9696 ;
+}
+
+.income-inner{
+    background-color: lightgreen ;
 }
 
 .op-main{
@@ -14,20 +19,35 @@
 }
 
 .op-detail{
-    width: 100%;
     display: flex;
     padding: 0.5em;
+    background-color: lightgray;
 }
 
-.new-op{
+.outcome-detail{
+    border: solid 2px #CB9696;
+}
+
+.income-detail{
+    border: solid 2px lightgreen ;
+}
+
+.new-outcome{
     width: 30em;
-    border: 1px solid darkgrey;
-    border-radius: 0.2em;
     margin-bottom: 0.5em;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #a61c2e;
+}
+
+.new-income{
+    width: 30em;
+    margin-bottom: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: seagreen;
 }
 
 .date{
@@ -71,8 +91,6 @@
 .operations-outcome{
     width: 30em;
     padding: 0.5em;
-    border: 1px solid black;
-    border-radius: 0.3em;
     margin: auto;
     background-color: lightgray;
 }
@@ -99,19 +117,24 @@
 }
 
 .datepicker{
-    margin-left: 2.2em;
+    margin-left: 2.3em;
 }
 
 .edit-amount{
-    margin-left: 0.5em;
+    margin-left: 0.65em;
 } 
     
 .edit-label{
-    margin-left: 1.15em;
+    margin-left: 1.3em;
 }    
 
 .edit-type{
     margin-left: 2.3em;
+    width: 8em;
+}
+
+.edit-category{
+    width: 8em;
 }
 
 .save-op{
@@ -121,6 +144,7 @@
 
 .app-container{
     width: 31.1em;
+    margin: auto;
 }
 
 .app-headers{
@@ -151,4 +175,15 @@
     text-align: center;
     width: 11em;
     cursor: pointer;
+}
+
+.current-sheet{
+    background-color: lightgray;
+}
+
+.disable-select {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
 }

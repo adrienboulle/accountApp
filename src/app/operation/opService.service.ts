@@ -7,11 +7,7 @@ export class OperationService {
     private emptyOp: Operation;
 
     setCurrentOp(op: Operation) {
-        if(this.currentOp == op) {
-            this.currentOp = this.emptyOp;
-        }else{
-            this.currentOp = op;
-        }
+        this.currentOp = this.currentOp === op ? undefined : op;
     }
 
     getCurrentOp(): Operation {

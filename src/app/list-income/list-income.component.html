@@ -1,3 +1,20 @@
-<p>
-  list-income incoming, lol, you saw what i did there.. :p
-</p>
+<div class="operations-outcome">
+  <div class="titles">
+    <div class="date">Date</div>
+    <div class="amount">Montant</div>
+    <div class="label">Libéllé</div>
+  </div>
+  <form class="new-income">
+    <my-date-picker 
+      class="new-date" 
+      [options]="myDatePickerOptions" 
+      (dateChanged)="onDateChanged($event)">
+    </my-date-picker>
+    <input class="new-amount" type="text" id="newAmount" #newAmount>
+    <input class="new-label" type="text" id="newLabel" #newLabel>
+    <div class="add-new-op" (click)="addOp(newAmount.value,newLabel.value)">
+      Ajouter
+    </div>
+ </form>
+  <operation [op]="op" *ngFor="let op of ops"></operation>
+</div>
