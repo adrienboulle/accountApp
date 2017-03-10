@@ -3,16 +3,15 @@ import { Operation } from '../operation/operation';
 import {IMyOptions, IMyDateModel, IMyDate} from 'mydatepicker';
 
 @Component({
-  selector: 'app-list-income',
-  templateUrl: './list-income.component.html',
-  styleUrls: ['../../assets/styles.css']
+  selector: 'list-income',
+  templateUrl: './list-income.component.html'
 })
 export class ListIncomeComponent implements OnInit {
 
   private _ops: Operation[];
 
   private myDatePickerOptions: IMyOptions = {
-      dateFormat: 'dd.mm.yyyy',
+      dateFormat: 'dd/mm/yyyy',
       todayBtnTxt: 'Today',
       firstDayOfWeek: 'mo',
       sunHighlight: true,
@@ -29,17 +28,19 @@ export class ListIncomeComponent implements OnInit {
         id: '1',
         amount: 100,
         label: 'anniv',
-        date: '10/03/2017',
-        type: 'income',
-        category: 'a',
+        date: Date.now(),
+        type: 1,
+        source: 'income',
+        category: 1,
       }),
       new Operation({
         id: '2',
         amount: 2000,
         label: 'salaire',
-        date: '01/03/2017',
-        type: 'income',
-        category: 'a',
+        date: Date.now(),
+        type: 1,
+        source: 'income',
+        category: 1,
       }),
     ];
   }
@@ -50,9 +51,9 @@ export class ListIncomeComponent implements OnInit {
     return this._ops;
   }
 
-  newDate: Date = new Date(Date.now());
+  newDate: number = 0;
   public onDateChanged(event: IMyDateModel) {
-        this.newDate = event.jsdate;
+        this.newDate = event.epoc;
   }
 
   public addOp (newAmount: number, newLabel: string): void {
@@ -63,8 +64,7 @@ export class ListIncomeComponent implements OnInit {
           amount: newAmount,
           label: newLabel,
           date: this.newDate,
-          type: 'income',
-          category: ''
+          source: 'intcome'
         })
       );
     }

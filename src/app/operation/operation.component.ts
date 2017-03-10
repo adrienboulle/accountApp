@@ -5,15 +5,14 @@ import { OperationService } from './opService.service'
 
 @Component({
   selector: 'operation',
-  templateUrl: './operation.component.html',
-  styleUrls: ['../../assets/styles.css']
+  templateUrl: './operation.component.html'
 })
 export class OperationComponent implements OnInit {
 
   @Input() op: Operation;
-  isIncome: boolean;
+  public datePickerDate;
 
-  newDate: Date = new Date(Date.now());
+  newDate: number = 0;
   categories = [
     {id: 1, name: "Logement"},
     {id: 2, name: "Carburant"},
@@ -44,7 +43,13 @@ export class OperationComponent implements OnInit {
   constructor(private opService: OperationService) { }
 
   public ngOnInit() {
-    this.isIncome = this.op.type === 'income' ? true : false;
+    this.datePickerDate = {
+      date : { 
+        year: (new Date(this.op.date)).getFullYear(), 
+        month: (new Date(this.op.date)).getMonth(), 
+        day: (new Date(this.op.date)).getDay() 
+      }
+    }
   }
 
   public toggleEdit() {
@@ -52,10 +57,10 @@ export class OperationComponent implements OnInit {
   }
 
   public onDateChanged(event: IMyDateModel) {
-    this.newDate = event.jsdate;
+    this.newDate = event.epoc;
   }
 
-  public editOp(newAmount: number, newLabel: string, newType?: string, newCategory?: string){
+  public editOp(newAmount: number, newLabel: string, newType?: number, newCategory?: number){
     this.op.amount = newAmount;
     this.op.date = this.newDate;
     this.op.label = newLabel;

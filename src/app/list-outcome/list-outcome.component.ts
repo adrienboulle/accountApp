@@ -4,15 +4,14 @@ import {IMyOptions, IMyDateModel, IMyDate} from 'mydatepicker';
 
 @Component({
   selector: 'list-outcome',
-  templateUrl: './list-outcome.component.html',
-  styleUrls: ['../../assets/styles.css']
+  templateUrl: './list-outcome.component.html'
 })
 export class ListOutcomeComponent implements OnInit {
 
   private _ops: Operation[];
 
   private myDatePickerOptions: IMyOptions = {
-        dateFormat: 'dd.mm.yyyy',
+        dateFormat: 'dd/mm/yyyy',
         todayBtnTxt: 'Today',
         firstDayOfWeek: 'mo',
         sunHighlight: true,
@@ -29,17 +28,19 @@ export class ListOutcomeComponent implements OnInit {
         id: '1',
         amount: 10,
         label: 'cinema',
-        date: '05/03/2017',
-        type: 'outcome',
-        category: 'a',
+        date: (new Date('02/03/2017')).getTime(),
+        type: 1,
+        source: 'outcome',
+        category: 1,
       }),
       new Operation({
         id: '2',
         amount: 15,
         label: 'courses',
         date: Date.now(),
-        type: 'outcome',
-        category: 'a',
+        type: 1,
+        source: 'outcome',
+        category: 2,
       }),
     ];
   }
@@ -50,9 +51,9 @@ export class ListOutcomeComponent implements OnInit {
     return this._ops;
   }
 
-  newDate: Date = new Date(Date.now());
+  newDate: number = 0;
   public onDateChanged(event: IMyDateModel) {
-        this.newDate = event.jsdate;
+        this.newDate = event.epoc;
   }
 
   public addOp (newAmount: number, newLabel: string): void {
@@ -63,8 +64,7 @@ export class ListOutcomeComponent implements OnInit {
           amount: newAmount,
           label: newLabel,
           date: this.newDate,
-          type: 'outcome',
-          category: ''
+          source: 'outcome'
         })
       );
     }

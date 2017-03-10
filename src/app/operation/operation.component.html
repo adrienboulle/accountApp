@@ -1,4 +1,4 @@
-<div class="op-inner" [ngClass]="{'outcome-inner': !isIncome, 'income-inner': isIncome}">
+<div class="op-inner">
   <div class="op-main">
     <div class="date">{{op.date | date:'d/M/y'}}</div>
     <div class="amount">{{op.amount}} €</div>
@@ -7,14 +7,16 @@
       Editer
     </div>
   </div>
-  <div class="op-detail" *ngIf="op === opService.getCurrentOp()" [ngClass]="{'outcome-detail': !isIncome, 'income-detail': isIncome}">
+  <div class="op-detail" *ngIf="op === opService.getCurrentOp()">
     <form class="edit-op">
       <div class="edit-date">
         <label>Date: </label>
         <my-date-picker 
           class="datepicker"
           [options]="myDatePickerOptions" 
-          (dateChanged)="onDateChanged($event)">
+          (dateChanged)="onDateChanged($event)"
+          [(ngModel)]="datePickerDate"
+          name="editDate">
         </my-date-picker>
       </div>
       <div>
@@ -27,14 +29,14 @@
       </div>
       <div>
         <label>Catégorie: </label>
-        <select [(ngModel)]="selectedCategory" class="edit-category" name="editCategory" #editCategory>
-          <option *ngFor="let c of categories" [ngValue]="c">{{c.name}}</option>
+        <select [(ngModel)]="op.category" class="edit-category" name="editCategory" #editCategory>
+          <option *ngFor="let c of categories" [ngValue]="c.id">{{c.name}}</option>
         </select>
       </div>
       <div>
         <label>Type: </label>
-        <select [(ngModel)]="selectedType" class="edit-type" name="editType" #editType>
-          <option *ngFor="let t of types" [ngValue]="t">{{t.name}}</option>
+        <select [(ngModel)]="op.type" class="edit-type" name="editType" #editType>
+          <option *ngFor="let t of types" [ngValue]="t.id">{{t.name}}</option>
         </select>
       </div>
       <button 
