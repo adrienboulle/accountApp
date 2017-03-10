@@ -46,8 +46,8 @@ export class OperationComponent implements OnInit {
     this.datePickerDate = {
       date : { 
         year: (new Date(this.op.date)).getFullYear(), 
-        month: (new Date(this.op.date)).getMonth(), 
-        day: (new Date(this.op.date)).getDay() 
+        month: (new Date(this.op.date)).getMonth() + 1, 
+        day: (new Date(this.op.date)).getDate() 
       }
     }
   }
