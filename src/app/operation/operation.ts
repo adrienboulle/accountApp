@@ -17,19 +17,3 @@ export class Operation {
         this.category = data.category;
     }
 }
-
-export enum Category {
-    Logement,
-    Carburant,
-    Alimentation,
-    Loisirs,
-    Autre
-}
-
-export enum Type {
-    Virement,
-    Chèque,
-    Espèces,
-    Carte,
-    Autre
-}

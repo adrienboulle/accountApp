@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Operation } from '../operation/operation';
 import { IMyOptions, IMyDateModel, IMyDate } from 'mydatepicker';
 import { OperationService } from '../operation/opService.service';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { DonutChartComponent } from '../donut/donut.component';
 
 @Component({
   selector: 'list-outcome',

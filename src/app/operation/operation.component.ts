@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IMyOptions, IMyDateModel, IMyDate } from 'mydatepicker';
-import { Operation, Type, Category } from './operation'
+import { Operation } from './operation'
 import { OperationService } from './opService.service'
 
 @Component({
@@ -11,8 +11,8 @@ export class OperationComponent implements OnInit {
 
   @Input() op: Operation;
   public datePickerDate: IMyDateModel;
-  public categories: string[] = Object.keys(Category);
-  public types: string[] = Object.keys(Type);
+  public categories: string[];
+  public types: string[];
 
   private myDatePickerOptions: IMyOptions = {
     dateFormat: 'dd/mm/yyyy',
@@ -27,8 +27,8 @@ export class OperationComponent implements OnInit {
   };
 
   constructor(private opService: OperationService) {
-    this.categories = this.categories.slice(this.categories.length / 2);
-    this.types = this.types.slice(this.types.length / 2);
+    this.categories = opService.getCategories();
+    this.types = opService.getTypes();
   }
 
   public ngOnInit() {
@@ -56,11 +56,11 @@ export class OperationComponent implements OnInit {
     this.datePickerDate = event;
   }
 
-  public editOp(newAmount: number, newLabel: string, newType?: number, newCategory?: number) {
+  public editOp(newAmount: number, newLabel: string, newType?: string, newCategory?: string) {
     this.op.amount = newAmount;
     this.op.label = newLabel;
-    this.op.type = Type[newType];
-    this.op.category = Category[newCategory];
+    this.op.type = newType;
+    this.op.category = newCategory;
     if(this.op.date != this.datePickerDate.epoc){
       this.op.date = this.datePickerDate.epoc*1000; 
     }
