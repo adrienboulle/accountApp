@@ -3,8 +3,8 @@
     <div class="date">{{op.date | date:'dd/MM/yyyy'}}</div>
     <div class="amount">{{op.amount}} €</div>
     <div class="label">{{op.label}}</div>
-    <div class="edit" (click)="toggleEdit()">
-      Editer
+    <div class="edit disable-select" (click)="toggleEdit()">
+      <span>Editer</span>
     </div>
   </div>
   <div class="op-detail" *ngIf="op === opService.getCurrentOp()">
@@ -39,7 +39,7 @@
           <option *ngFor="let t of types" [ngValue]="t">{{t}}</option>
         </select>
       </div>
-      <button 
+      <button
         class="save-op" 
         (click)="editOp(editAmount.value, editLabel.value, editType.value, editCategory.value)">
         Enregistrer

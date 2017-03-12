@@ -20,8 +20,7 @@ export class OperationService {
         'Carte',
         'Autre'
     ];
-
-
+    
     private ops: Operation[] = [
         new Operation({
             id: '1',

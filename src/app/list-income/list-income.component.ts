@@ -17,7 +17,7 @@ export class ListIncomeComponent implements OnInit {
       firstDayOfWeek: 'mo',
       sunHighlight: true,
       height: '19px',
-      width: '70px',
+      width: '130px',
       inline: false,
       disableUntil: {year: 2016, month: 8, day: 10},
       selectionTxtFontSize: '12px'
