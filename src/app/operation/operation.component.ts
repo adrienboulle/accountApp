@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {IMyOptions, IMyDateModel, IMyDate} from 'mydatepicker';
-import { Operation } from './operation'
+import { IMyOptions, IMyDateModel, IMyDate } from 'mydatepicker';
+import { Operation, Type, Category } from './operation'
 import { OperationService } from './opService.service'
 
 @Component({
@@ -10,23 +10,9 @@ import { OperationService } from './opService.service'
 export class OperationComponent implements OnInit {
 
   @Input() op: Operation;
-  public datePickerDate;
-
-  newDate: number = 0;
-  categories = [
-    {id: 1, name: "Logement"},
-    {id: 2, name: "Carburant"},
-    {id: 3, name: "Alimentation"},
-    {id: 4, name: "Loisirs"},
-    {id: 5, name: "Autre"},
-  ];
-  types = [
-    {id: 1, name: "Virement"},
-    {id: 2, name: "Chèque"},
-    {id: 3, name: "Espèces"},
-    {id: 4, name: "Carte"},
-    {id: 5, name: "Autre"},
-  ];
+  public datePickerDate: IMyDateModel;
+  public categories: string[] = Object.keys(Category);
+  public types: string[] = Object.keys(Type);
 
   private myDatePickerOptions: IMyOptions = {
     dateFormat: 'dd/mm/yyyy',
@@ -36,36 +22,49 @@ export class OperationComponent implements OnInit {
     height: '19px',
     width: '150px',
     inline: false,
-    disableUntil: {year: 2016, month: 1, day: 1},
+    disableUntil: { year: 2016, month: 1, day: 1 },
     selectionTxtFontSize: '12px'
   };
 
-  constructor(private opService: OperationService) { }
+  constructor(private opService: OperationService) {
+    this.categories = this.categories.slice(this.categories.length / 2);
+    this.types = this.types.slice(this.types.length / 2);
+  }
 
   public ngOnInit() {
-    this.datePickerDate = {
-      date : { 
-        year: (new Date(this.op.date)).getFullYear(), 
-        month: (new Date(this.op.date)).getMonth() + 1, 
-        day: (new Date(this.op.date)).getDate() 
-      }
+    this.datePickerDate = this.dateToModel(this.op.date)
+  }
+
+  private dateToModel(date: number): IMyDateModel {
+    return { 
+      date: {
+        year: (new Date(date)).getFullYear(), 
+        month: (new Date(date)).getMonth() + 1, 
+        day: (new Date(date)).getDate()
+      },
+      jsdate: new Date(date),
+      formatted: (new Date(date)).toDateString(),
+      epoc: date
     }
   }
+  
 
   public toggleEdit() {
     this.opService.setCurrentOp(this.op);
   }
 
   public onDateChanged(event: IMyDateModel) {
-    this.newDate = event.epoc;
+    this.datePickerDate = event;
   }
 
-  public editOp(newAmount: number, newLabel: string, newType?: number, newCategory?: number){
+  public editOp(newAmount: number, newLabel: string, newType?: string, newCategory?: string) {
     this.op.amount = newAmount;
-    this.op.date = this.newDate;
     this.op.label = newLabel;
-    this.op.type = newType;
-    this.op.category = newCategory;
+    this.op.type = Type[newType];
+    this.op.category = Category[newCategory];
+    if(this.op.date != this.datePickerDate.epoc){
+      this.op.date = this.datePickerDate.epoc*1000; 
+    }
   }
 
 }

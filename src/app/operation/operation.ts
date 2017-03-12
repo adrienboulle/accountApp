@@ -13,10 +13,23 @@ export class Operation {
         this.label = data.label;
         this.date = data.date;
         this.type = data.type;
-        this.source = data.type;
+        this.source = data.source;
         this.category = data.category;
     }
-
-
 }
 
+export enum Category {
+    Logement,
+    Carburant,
+    Alimentation,
+    Loisirs,
+    Autre
+}
+
+export enum Type {
+    Virement,
+    Chèque,
+    Espèces,
+    Carte,
+    Autre
+}

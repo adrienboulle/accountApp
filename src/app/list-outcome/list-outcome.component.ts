@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Operation } from '../operation/operation';
-import {IMyOptions, IMyDateModel, IMyDate} from 'mydatepicker';
+import { IMyOptions, IMyDateModel, IMyDate } from 'mydatepicker';
+import { OperationService } from '../operation/opService.service';
 
 @Component({
   selector: 'list-outcome',
@@ -22,27 +23,8 @@ export class ListOutcomeComponent implements OnInit {
         selectionTxtFontSize: '12px'
     };
 
-  constructor() {
-    this._ops = [
-      new Operation({
-        id: '1',
-        amount: 10,
-        label: 'cinema',
-        date: (new Date('02/03/2017')).getTime(),
-        type: 1,
-        source: 'outcome',
-        category: 1,
-      }),
-      new Operation({
-        id: '2',
-        amount: 15,
-        label: 'courses',
-        date: Date.now(),
-        type: 1,
-        source: 'outcome',
-        category: 2,
-      }),
-    ];
+  constructor(opService: OperationService) {
+    this._ops = opService.getListOutcome();
   }
 
   ngOnInit() { }
@@ -53,7 +35,7 @@ export class ListOutcomeComponent implements OnInit {
 
   newDate: number = 0;
   public onDateChanged(event: IMyDateModel) {
-        this.newDate = event.epoc;
+        this.newDate = event.epoc*1000;
   }
 
   public addOp (newAmount: number, newLabel: string): void {
