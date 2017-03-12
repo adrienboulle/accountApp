@@ -3,9 +3,9 @@ export class Operation {
     amount: number;
     label: string;
     date: number;
-    type: number;
+    type: string;
     source: string;
-    category: number;
+    category: string;
 
     constructor(data: any) {
         this.id = data.id;

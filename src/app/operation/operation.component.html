@@ -29,7 +29,7 @@
       </div>
       <div>
         <label>Catégorie: </label>
-        <select [(ngModel)]="op.category" class="edit-category" name="editCategory" #editCategory>
+        <select [value]="op.category" class="edit-category" name="editCategory" #editCategory>
           <option *ngFor="let c of categories" [ngValue]="c">{{c}}</option>
         </select>
       </div>

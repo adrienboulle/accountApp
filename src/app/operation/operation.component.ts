@@ -32,7 +32,7 @@ export class OperationComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.datePickerDate = this.dateToModel(this.op.date)
+    this.datePickerDate = this.dateToModel(this.op.date);
   }
 
   private dateToModel(date: number): IMyDateModel {
@@ -47,7 +47,6 @@ export class OperationComponent implements OnInit {
       epoc: date
     }
   }
-  
 
   public toggleEdit() {
     this.opService.setCurrentOp(this.op);
@@ -57,7 +56,7 @@ export class OperationComponent implements OnInit {
     this.datePickerDate = event;
   }
 
-  public editOp(newAmount: number, newLabel: string, newType?: string, newCategory?: string) {
+  public editOp(newAmount: number, newLabel: string, newType?: number, newCategory?: number) {
     this.op.amount = newAmount;
     this.op.label = newLabel;
     this.op.type = Type[newType];
