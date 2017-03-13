@@ -11,8 +11,6 @@ import { DonutChartComponent } from '../donut/donut.component';
 })
 export class ListOutcomeComponent implements OnInit {
 
-  private _ops: Operation[];
-
   private myDatePickerOptions: IMyOptions = {
         dateFormat: 'dd/mm/yyyy',
         todayBtnTxt: 'Today',
@@ -25,14 +23,12 @@ export class ListOutcomeComponent implements OnInit {
         selectionTxtFontSize: '12px'
     };
 
-  constructor(opService: OperationService) {
-    this._ops = opService.getListOutcome();
-  }
+  constructor(private opService: OperationService) { }
 
   ngOnInit() { }
 
   public get ops(): Operation[] {
-    return this._ops;
+    return this.opService.getListOutcome();
   }
 
   newDate: number = 0;
@@ -42,15 +38,7 @@ export class ListOutcomeComponent implements OnInit {
 
   public addOp (newAmount: number, newLabel: string): void {
     if(newAmount && newLabel) {
-      this._ops.push(
-        new Operation({
-          id: '1',
-          amount: newAmount,
-          label: newLabel,
-          date: this.newDate,
-          source: 'outcome'
-        })
-      );
+      this.opService.addOp(newAmount, newLabel, this.newDate, 'outcome');
     }
   }
 

@@ -9,8 +9,6 @@ import { OperationService } from '../operation/opService.service';
 })
 export class ListIncomeComponent implements OnInit {
 
-  private _ops: Operation[];
-
   private myDatePickerOptions: IMyOptions = {
       dateFormat: 'dd/mm/yyyy',
       todayBtnTxt: 'Today',
@@ -23,14 +21,12 @@ export class ListIncomeComponent implements OnInit {
       selectionTxtFontSize: '12px'
   };
 
-  constructor(opService: OperationService) {
-    this._ops = opService.getListIncome();
-  }
+  constructor(private opService: OperationService) { }
 
   ngOnInit() { }
 
   public get ops(): Operation[] {
-    return this._ops;
+    return this.opService.getListIncome();
   }
 
   newDate: number = 0;
@@ -40,15 +36,7 @@ export class ListIncomeComponent implements OnInit {
 
   public addOp (newAmount: number, newLabel: string): void {
     if(newAmount && newLabel) {
-      this._ops.push(
-        new Operation({
-          id: '1',
-          amount: newAmount,
-          label: newLabel,
-          date: this.newDate,
-          source: 'income'
-        })
-      );
+      this.opService.addOp(newAmount, newLabel, this.newDate, 'income');
     }
   }
 }

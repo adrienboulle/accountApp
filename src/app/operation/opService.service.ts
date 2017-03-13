@@ -197,4 +197,15 @@ export class OperationService {
         }
         return result;
     }
+
+    addOp(amount: number, label: string, date: number, source: string): void {
+        this.ops.push(
+            new Operation({
+                amount: Number(amount),
+                label: label,
+                date: date,
+                source: source
+            })
+        );
+    }
 }
