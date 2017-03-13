@@ -36,10 +36,10 @@ export class OperationComponent implements OnInit {
   }
 
   private dateToModel(date: number): IMyDateModel {
-    return { 
+    return {
       date: {
-        year: (new Date(date)).getFullYear(), 
-        month: (new Date(date)).getMonth() + 1, 
+        year: (new Date(date)).getFullYear(),
+        month: (new Date(date)).getMonth() + 1,
         day: (new Date(date)).getDate()
       },
       jsdate: new Date(date),
@@ -61,8 +61,12 @@ export class OperationComponent implements OnInit {
     this.op.label = newLabel;
     this.op.type = newType;
     this.op.category = newCategory;
-    if(this.op.date != this.datePickerDate.epoc){
-      this.op.date = this.datePickerDate.epoc*1000; 
+    if (this.op.date != this.datePickerDate.epoc) {
+      this.op.date = this.datePickerDate.epoc * 1000;
     }
+  }
+
+  public deleteOp(): void {
+    this.opService.deleteOp(this.op);
   }
 }

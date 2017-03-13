@@ -208,4 +208,8 @@ export class OperationService {
             })
         );
     }
+
+    deleteOp(op: Operation): void {
+        this.ops.splice(this.ops.indexOf(op), 1);
+    }
 }

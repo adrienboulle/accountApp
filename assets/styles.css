@@ -55,6 +55,7 @@
 }
 
 .new-amount{
+    text-align: right;
     margin: 0.3em;
     margin-right: 1em;
     margin-left: 1em;
@@ -69,7 +70,7 @@
 
 .operations-outcome{
     display: flex;
-    width: 55em;
+    width: 53em;
     height: 22em;
     padding: 1em;
     margin: auto;
@@ -114,15 +115,15 @@
 }
 
 .datepicker{
-    margin-left: 2.3em;
+    margin-left: 2.25em;
 }
 
 .edit-amount{
-    margin-left: 0.65em;
+    margin-left: 0.60em;
 } 
     
 .edit-label{
-    margin-left: 1.3em;
+    margin-left: 1.25em;
 }    
 
 .edit-type{
@@ -193,7 +194,7 @@ list-outcome operation .op-detail{
 }
 
 .data-side{
-    margin-left: 3em;
+    margin-left: 1em;
     width: 33em;
     margin-top: initial;
 }
@@ -205,6 +206,7 @@ list-outcome operation .op-detail{
 operation .op-detail{
     padding: 0.5em;
     background-color: lightgrey;
+    display: flex;
 }
 
 operation{
@@ -220,4 +222,8 @@ operation{
 
 .list-op{
     width: 33em;
+}
+
+.app-home{
+    text-align: center;
 }
