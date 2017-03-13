@@ -14,10 +14,10 @@
         [options]="myDatePickerOptions" 
         (dateChanged)="onDateChanged($event)">
       </my-date-picker>
-      <input class="new-amount" type="text" id="newAmount" #newAmount>
+      <input class="new-amount" type="number" id="newAmount" #newAmount>
       <input class="new-label" type="text" id="newLabel" #newLabel>
       <div class="add-new-op disable-select" (click)="addOp(newAmount.value,newLabel.value)">
-        Ajouter
+        <span>Ajouter</span>
       </div>
     </form>
     <div class="list-op">

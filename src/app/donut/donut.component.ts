@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, DoCheck } from '@angular/core';
 import { OperationService } from '../operation/opService.service';
 
 @Component({
     selector: 'donut',
     templateUrl: './donut.component.html'
 })
-export class DonutChartComponent implements OnInit {
+export class DonutChartComponent implements DoCheck {
 
     @Input() isIncome: boolean;
 
@@ -19,11 +19,12 @@ export class DonutChartComponent implements OnInit {
         this.donutChartType = 'doughnut';
     }
 
-    ngOnInit(){
+    ngDoCheck() {
         if (this.isIncome) {
             this.donutChartData = this.opService.getIncomeRepartition();
         } else {
             this.donutChartData = this.opService.getOutcomeRepartition();
         }
     }
+
 }

@@ -57,7 +57,7 @@ export class OperationComponent implements OnInit {
   }
 
   public editOp(newAmount: number, newLabel: string, newType?: string, newCategory?: string) {
-    this.op.amount = newAmount;
+    this.op.amount = Number(newAmount);
     this.op.label = newLabel;
     this.op.type = newType;
     this.op.category = newCategory;
