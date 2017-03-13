@@ -65,5 +65,4 @@ export class OperationComponent implements OnInit {
       this.op.date = this.datePickerDate.epoc*1000; 
     }
   }
-
 }

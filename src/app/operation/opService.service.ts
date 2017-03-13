@@ -189,7 +189,7 @@ export class OperationService {
         return result;
     }
 
-    getOutcomeRepartition(): Array<number> {
+    getOutcomeRepartition(): number[] {
         let outcomeOps = this.getListOutcome();
         let result: number[] = [];
         for(let i = 0; i < this.categories.length; i++) {
