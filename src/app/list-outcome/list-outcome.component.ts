@@ -42,5 +42,9 @@ export class ListOutcomeComponent implements OnInit {
     }
   }
 
+  public getChartData(): number[] {
+    return this.opService.getOutcomeRepartition();
+  }
+
 
 }

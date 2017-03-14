@@ -39,4 +39,8 @@ export class ListIncomeComponent implements OnInit {
       this.opService.addOp(newAmount, newLabel, this.newDate, 'income');
     }
   }
+
+  public getChartData(): number[] {
+    return this.opService.getIncomeRepartition();
+  }
 }

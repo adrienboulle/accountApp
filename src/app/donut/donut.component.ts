@@ -5,13 +5,12 @@ import { OperationService } from '../operation/opService.service';
     selector: 'donut',
     templateUrl: './donut.component.html'
 })
-export class DonutChartComponent implements DoCheck {
+export class DonutChartComponent {
 
     @Input() isIncome: boolean;
-
-    // Donut
+    @Input() donutChartData: number[];
+    
     public donutChartLabels: string[];
-    public donutChartData: number[];
     public donutChartType: string;
 
     constructor(public opService: OperationService) {
@@ -19,12 +18,12 @@ export class DonutChartComponent implements DoCheck {
         this.donutChartType = 'doughnut';
     }
 
-    ngDoCheck() {
+    /*ngDoCheck() {
         if (this.isIncome) {
             this.donutChartData = this.opService.getIncomeRepartition();
         } else {
             this.donutChartData = this.opService.getOutcomeRepartition();
         }
-    }
+    }*/
 
 }

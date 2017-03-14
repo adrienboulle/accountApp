@@ -1,6 +1,6 @@
 <div class="operations-outcome">
   <div class="graphic-side">
-    <donut [isIncome]="true"></donut>
+    <donut [isIncome]="true" [donutChartData]="getChartData()"></donut>
   </div>
   <div class="data-side">
     <div class="titles">
@@ -20,8 +20,10 @@
         <span>Ajouter</span>
       </div>
     </form>
-    <div class="list-op">
-      <operation [op]="op" *ngFor="let op of ops"></operation>
+    <div class="list-and-overflow">
+      <div class="list-op">
+        <operation [op]="op" *ngFor="let op of ops"></operation>
+      </div>
     </div>
   </div>
 </div>
