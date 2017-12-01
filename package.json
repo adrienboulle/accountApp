@@ -8,7 +8,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -25,7 +27,8 @@
     "mydatepicker": "^1.7.3",
     "ng2-charts": "^1.5.0",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.7.6"
+    "zone.js": "^0.7.6",
+    "snyk": "^1.52.1"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.1",
@@ -45,5 +48,6 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
     "typescript": "~2.0.0"
-  }
+  },
+  "snyk": true
 }
